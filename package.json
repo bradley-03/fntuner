@@ -1,0 +1,24 @@
+{
+  "name": "fn-resconfig",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradley-03/fn-resconfig.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradley-03/fn-resconfig/issues"
+  },
+  "homepage": "https://github.com/bradley-03/fn-resconfig#readme",
+  "dependencies": {
+    "ini": "^4.1.1",
+    "winattr": "^3.0.0"
+  }
+}

@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
+const controller = require('./controller')
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -14,9 +15,12 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-    ipcMain.handle('ping', () => {
-        console.log("pong") 
+    ipcMain.handle('getResX', () => {
+        const test = controller.getResX()
+        console.log(test)
+        return test
     })
+    ipcMain.handle('getResY', () => controller.getResY())
     createWindow()
 
     app.on('activate', () => {

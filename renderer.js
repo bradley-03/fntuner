@@ -3,15 +3,15 @@ const filepathBox = document.getElementById('filepath-box')
 const resXBox = document.getElementById('resXBox')
 const resYBox = document.getElementById('resYBox')
 
-async function setInitialValues () {
-    const initValues = await window.electronAPI.getInitValues()
-    filepathBox.value = initValues.filePath
-    resXBox.value = initValues.resolutionX
-    resYBox.value = initValues.resolutionY
+async function setValues () {
+    const values = await window.electronAPI.setValues()
+    filepathBox.value = values.filePath
+    resXBox.value = values.resolutionX
+    resYBox.value = values.resolutionY
 }
-setInitialValues()
+setValues()
 
 filepathBtn.addEventListener('click', async () => {
-    const newPath = await window.electronAPI.setFilePath()
-    filepathBox.value = newPath
+    await window.electronAPI.setFilePath()
+    setValues()
 })

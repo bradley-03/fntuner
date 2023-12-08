@@ -19,6 +19,7 @@ module.exports.setFilePath = async function () {
     if (!canceled) {
         if (fs.existsSync(path.join(filePaths[0], 'GameUserSettings.ini'))) {
             await config.set('settings', {filePath: filePaths[0]})
+            await controller.openCfgFile()
             return filePaths
         }
         await dialog.showErrorBox("Invalid Directory!", "The directory you selected doesn't include a 'GameUserSettings.ini' config file.")

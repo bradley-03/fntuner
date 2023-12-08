@@ -1,7 +1,6 @@
 const fs = require('fs')
 const ini = require('ini')
 const winattr = require('winattr')
-const os = require('os')
 const path = require('path')
 const config = require('./config.js')
 const {dialog} = require('electron')
@@ -17,7 +16,7 @@ module.exports.openCfgFile = async function () {
         await config.setFilePath()
     }
 }
-module.exports.getInitValues = async function () {
+module.exports.setValues = async function () {
     const configSettings = await config.getConfig()
     const values = {
         ...configSettings,
@@ -26,7 +25,4 @@ module.exports.getInitValues = async function () {
     }
 
     return values
-}
-
-module.exports.setResolution = function (evt, arg) {
 }

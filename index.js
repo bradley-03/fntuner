@@ -20,6 +20,7 @@ app.whenReady().then(() => {
     controller.openCfgFile()
     ipcMain.handle('setFilePath', config.setFilePath)
     ipcMain.handle('setValues', controller.setValues)
+    ipcMain.on('updateConfig', (event, data) => controller.updateConfig(data))
 
     createWindow()
 

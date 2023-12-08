@@ -15,7 +15,7 @@ module.exports.createConfig = function () {
 }
 
 module.exports.setFilePath = async function () {
-    const {canceled, filePaths} = await dialog.showOpenDialog({properties: ['openDirectory']})
+    const {canceled, filePaths} = await dialog.showOpenDialog({properties: ['openDirectory'], defaultPath: await config.get('settings.filePath')})
     if (!canceled) {
         if (fs.existsSync(path.join(filePaths[0], 'GameUserSettings.ini'))) {
             await config.set('settings', {filePath: filePaths[0]})

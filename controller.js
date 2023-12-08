@@ -17,15 +17,6 @@ module.exports.openCfgFile = async function () {
         await config.setFilePath()
     }
 }
-
-// module.exports.getResX = function () {
-//     return config['/Script/FortniteGame']['FortGameUserSettings'].ResolutionSizeX
-// }
-
-// module.exports.getResY = function () {
-//     return config['/Script/FortniteGame']['FortGameUserSettings'].ResolutionSizeY
-// }
-
 module.exports.getInitValues = async function () {
     const configSettings = await config.getConfig()
     const values = {

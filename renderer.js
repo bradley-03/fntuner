@@ -9,3 +9,7 @@ async function setInitialXY () {
     if (box2) box2.value = y
 }
 setInitialXY()
+
+button.addEventListener("click", async () => {
+    window.electron.setResolution()
+})

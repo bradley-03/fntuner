@@ -15,12 +15,10 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-    ipcMain.handle('getResX', () => {
-        const test = controller.getResX()
-        console.log(test)
-        return test
-    })
+    ipcMain.handle('getResX', () => controller.getResX())
     ipcMain.handle('getResY', () => controller.getResY())
+    ipcMain.on('setResolution', async () => controller.setFilePath())
+
     createWindow()
 
     app.on('activate', () => {

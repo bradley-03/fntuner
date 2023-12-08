@@ -3,6 +3,7 @@ const config = require('electron-settings')
 const os = require('os')
 const path = require('path')
 const fs = require('fs')
+const controller = require('./controller')
 
 module.exports.createConfig = function () {
     if (!config.hasSync("settings")) {

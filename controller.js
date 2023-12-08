@@ -4,11 +4,19 @@ const winattr = require('winattr')
 const os = require('os')
 const path = require('path')
 const config = require('./config.js')
+const {dialog} = require('electron')
 
-// const configPath = './GameUserSettings.ini'
-// const config = ini.parse(fs.readFileSync(configPath, 'utf-8'))
+let cfgFile = ""
 
-
+module.exports.openCfgFile = async function () {
+    const configSettings = await config.getConfig()
+    if (fs.existsSync(path.join(configSettings.filePath, "GameUserSettings.ini"))) {
+        cfgFile = ini.parse(fs.readFileSync(path.join(configSettings.filePath, "GameUserSettings.ini"), 'utf-8'))
+    } else {
+        await dialog.showErrorBox("Invalid Directory!", "The current selected directory doesn't include 'GameUserSettings.ini' config file, please choose a new one.")
+        await config.setFilePath()
+    }
+}
 
 // module.exports.getResX = function () {
 //     return config['/Script/FortniteGame']['FortGameUserSettings'].ResolutionSizeX
@@ -20,7 +28,11 @@ const config = require('./config.js')
 
 module.exports.getInitValues = async function () {
     const configSettings = await config.getConfig()
-    const values = {...configSettings}
+    const values = {
+        ...configSettings,
+        resolutionX: cfgFile['/Script/FortniteGame']['FortGameUserSettings'].ResolutionSizeX || 1920,
+        resolutionY: cfgFile['/Script/FortniteGame']['FortGameUserSettings'].ResolutionSizeY || 1080,
+    }
 
     return values
 }

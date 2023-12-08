@@ -18,6 +18,7 @@ const createWindow = () => {
 app.whenReady().then(() => {
     config.createConfig() // create cfg file if none exists
     ipcMain.handle('setFilePath', config.setFilePath)
+    ipcMain.handle('getInitValues', controller.getInitValues)
 
     createWindow()
 

@@ -13,10 +13,6 @@ module.exports.createConfig = function () {
     }
 }
 
-module.exports.initConfig = function () {
-    
-}
-
 module.exports.setFilePath = async function () {
     const {canceled, filePaths} = await dialog.showOpenDialog({properties: ['openDirectory']})
     if (!canceled) {

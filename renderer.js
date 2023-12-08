@@ -1,15 +1,12 @@
-const button = document.getElementById('testbtn')
+async function setInitialValues () {
 
-async function setInitialXY () {
-    const x = await window.electron.resX()
-    const y = await window.electron.resY()
-    const box = document.getElementById('resXBox')
-    const box2 = document.getElementById('resYBox')
-    if (box) box.value = x
-    if (box2) box2.value = y
 }
-setInitialXY()
+setInitialValues()
 
-button.addEventListener("click", async () => {
-    window.electron.setResolution()
+const filepathBtn = document.getElementById('filepath-btn')
+const filepathBox = document.getElementById('filepath-box')
+
+filepathBtn.addEventListener('click', async () => {
+    const newPath = await window.electronAPI.setFilePath()
+    filepathBox.value = newPath
 })

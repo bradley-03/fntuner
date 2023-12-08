@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const controller = require('./controller')
+const config = require('./config')
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -15,9 +16,8 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-    ipcMain.handle('getResX', () => controller.getResX())
-    ipcMain.handle('getResY', () => controller.getResY())
-    ipcMain.on('setResolution', async () => controller.setFilePath())
+    config.createConfig() // create cfg file if none exists
+    ipcMain.handle('setFilePath', config.setFilePath)
 
     createWindow()
 

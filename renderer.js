@@ -3,6 +3,7 @@ const filepathBox = document.getElementById('filepath-box')
 const resXBox = document.getElementById('resXBox')
 const resYBox = document.getElementById('resYBox')
 const renderSelect = document.getElementById('render-select')
+const readOnlyCheck = document.getElementById('readonly-check')
 
 async function setValues () {
     const values = await window.electronAPI.setValues()
@@ -10,6 +11,7 @@ async function setValues () {
     resXBox.value = values.resolutionX
     resYBox.value = values.resolutionY
     renderSelect.value = values.renderApi
+    readOnlyCheck.checked = values.readOnly
 }
 setValues()
 

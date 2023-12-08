@@ -3,25 +3,28 @@ const ini = require('ini')
 const winattr = require('winattr')
 const path = require('path')
 const config = require('./config.js')
-const {dialog} = require('electron')
+const { dialog } = require('electron')
 
 let cfgFile = ""
+let cfgPath = ""
 
 const renderAPIs = {
-    performance: {PreferredRHI: "dx11", PreferredFeatureLevel: "es31"},
-    dx11: {PreferredRHI: "dx11", PreferredFeatureLevel: "sm5"},
-    dx12: {PreferredRHI: "dx12", PreferredFeatureLevel: "sm6"},
+    performance: { PreferredRHI: "dx11", PreferredFeatureLevel: "es31" },
+    dx11: { PreferredRHI: "dx11", PreferredFeatureLevel: "sm5" },
+    dx12: { PreferredRHI: "dx12", PreferredFeatureLevel: "sm6" },
 }
 
 module.exports.openCfgFile = async function () {
     const configSettings = await config.getConfig()
     if (fs.existsSync(path.join(configSettings.filePath, "GameUserSettings.ini"))) {
         cfgFile = ini.parse(fs.readFileSync(path.join(configSettings.filePath, "GameUserSettings.ini"), 'utf-8'))
+        cfgPath = path.join(configSettings.filePath, "GameUserSettings.ini")
     } else {
         await dialog.showErrorBox("Invalid Directory!", "The current selected directory doesn't include 'GameUserSettings.ini' config file, please choose a new one.")
         await config.setFilePath()
     }
 }
+
 module.exports.setValues = async function () {
     const configSettings = await config.getConfig()
 
@@ -41,7 +44,12 @@ module.exports.setValues = async function () {
         resolutionX: cfgFile['/Script/FortniteGame']['FortGameUserSettings'].ResolutionSizeX || 1920,
         resolutionY: cfgFile['/Script/FortniteGame']['FortGameUserSettings'].ResolutionSizeY || 1080,
         renderApi,
+        readOnly: winattr.getSync(cfgPath)["readonly"],
     }
 
     return values
+}
+
+module.exports.updateConfig = function () {
+
 }

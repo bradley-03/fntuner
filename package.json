@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/bradley-03/fn-resconfig#readme",
   "dependencies": {
+    "electron-settings": "^4.0.2",
     "ini": "^4.1.1",
     "winattr": "^3.0.0"
   },

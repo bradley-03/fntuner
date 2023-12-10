@@ -2,3 +2,4 @@ node_modules
 GameUserSettings.ini
 GameUserSettings_BAK.ini
 out/
+dist/

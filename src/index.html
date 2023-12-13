@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ResCFG</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <label for="filepath-btn">Config Directory:</label>
-    <input id="filepath-box" type="text" placeholder="File Path">
-    <button id="filepath-btn">Change Path</button>
-    <br>
-    <label for="resXBox">Change Resolution:</label>
-    <input  type="number" value="" id="resXBox" placeholder="Height">
-    <input type="number" value="" id="resYBox" placeholder="Width">
-    <br>
-    <label for="render-select">Rendering Mode:</label>
-    <select id="render-select">
-        <option value="performance">Performance Mode</option>
-        <option value="dx11">DirectX 11</option>
-        <option value="dx12">DirectX 12</option>
-    </select>
-    <br>
-    <label for="readonly-check">Read Only:</label>
-    <input type="checkbox" id="readonly-check">
-    <br>
-    <button id="confirmbtn">Confirm</button>
+    <div class="wrap">
+        <img src="./img/bg-snow.png" alt="" class="bg-img">
+        <div class="content">
+            <label for="filepath-btn">Config Directory:</label>
+            <div class="fileSelector">
+                <input id="filepath-box" type="text" placeholder="File Path" readonly="readonly">
+                <button id="filepath-btn">Change Path</button>
+            </div>
+            <br>
+            <label for="resXBox">Change Resolution:</label>
+            <input type="number" value="" id="resXBox" placeholder="Height">
+            <input type="number" value="" id="resYBox" placeholder="Width">
+            <br>
+            <label for="render-select">Rendering Mode:</label>
+            <select id="render-select">
+                <option value="performance">Performance Mode</option>
+                <option value="dx11">DirectX 11</option>
+                <option value="dx12">DirectX 12</option>
+            </select>
+            <br>
+            <label for="readonly-check">Read Only:</label>
+            <input type="checkbox" id="readonly-check">
+            <br>
+            <button id="confirmbtn">Confirm</button>
+        </div>
+    </div>
     <script src="../renderer.js"></script>
 </body>
+
 </html>

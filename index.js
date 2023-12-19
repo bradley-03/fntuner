@@ -1,4 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
+const electron = require('electron')
+
+// Enable live reload for all the files inside your project directory
+require('electron-reload')(__dirname);
 const path = require('path')
 const controller = require('./controller')
 const config = require('./config')

@@ -16,11 +16,11 @@ const createWindow = () => {
         }
     })
 
-    win.loadFile(path.join(__dirname, 'src', 'index.html'))
+    win.loadFile(path.join(__dirname, 'src', 'html', 'index.html'))
 }
 
 app.whenReady().then(() => {
-    config.createConfig() // create cfg file if none exists
+    config.createSettingsFile() // create cfg file if none exists
     controller.openCfgFile()
     ipcMain.handle('setFilePath', config.setFilePath)
     ipcMain.handle('setValues', controller.setValues)

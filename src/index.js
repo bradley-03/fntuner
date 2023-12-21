@@ -5,7 +5,7 @@ const electron = require('electron')
 require('electron-reload')(__dirname);
 const path = require('path')
 const controller = require('./lib/controller.js')
-const config = require('./lib/config.js')
+const config = require('./lib/userData.js')
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -20,6 +20,7 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
+    // config.createDataFile()
     config.createSettingsFile() // create cfg file if none exists
     controller.openCfgFile()
     ipcMain.handle('setFilePath', config.setFilePath)

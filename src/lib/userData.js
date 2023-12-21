@@ -1,11 +1,34 @@
-const {dialog, app} = require('electron')
+const { dialog, app } = require('electron')
 const settings = require('electron-settings')
 const os = require('os')
 const path = require('path')
 const fs = require('fs')
 const controller = require('./controller')
 
+const dataPath = path.join(app.getPath('userData'), 'userData.json')
+
+console.log(dataPath)
+
+module.exports.createDataFile = function () {
+    const defaultData = JSON.stringify({
+        filePath: path.join(os.homedir(), 'AppData', 'Local', 'FortniteGame', 'Saved', 'Config', 'WindowsClient'),
+        presets: []
+    }, null, 4)
+
+    fs.access(dataPath, fs.constants.R_OK | fs.constants.W_OK, (err) => {
+        if (!err) {
+            console.log("Loading user data.")
+        } else {
+            fs.writeFile(dataPath, defaultData, (e) => { // write userData file
+                if (e) { console.log("Error writing userData file.", e) }
+            })
+        }
+    })
+}
+
+
 module.exports.createSettingsFile = function () {
+    // console.log(dataPath)
     // console.log(app.getPath('userData'))
     try {
         if (!settings.hasSync("settings") && !settings.hasSync("configs")) {
@@ -21,10 +44,10 @@ module.exports.createSettingsFile = function () {
 }
 
 module.exports.setFilePath = async function () {
-    const {canceled, filePaths} = await dialog.showOpenDialog({properties: ['openDirectory'], defaultPath: await settings.get('settings.filePath')})
+    const { canceled, filePaths } = await dialog.showOpenDialog({ properties: ['openDirectory'], defaultPath: await settings.get('settings.filePath') })
     if (!canceled) {
         if (fs.existsSync(path.join(filePaths[0], 'GameUserSettings.ini'))) {
-            await settings.set('settings', {filePath: filePaths[0]})
+            await settings.set('settings', { filePath: filePaths[0] })
             await controller.openCfgFile()
             return filePaths
         }

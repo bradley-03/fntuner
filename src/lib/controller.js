@@ -2,7 +2,7 @@ const fs = require('fs')
 const ini = require('ini')
 const winattr = require('winattr')
 const path = require('path')
-const config = require('./config.js')
+const config = require('./userData.js')
 const { dialog } = require('electron')
 
 let cfgFile = undefined

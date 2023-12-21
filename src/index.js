@@ -20,7 +20,7 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-    // config.createDataFile()
+    config.createDataFile()
     config.createSettingsFile() // create cfg file if none exists
     controller.openCfgFile()
     ipcMain.handle('setFilePath', config.setFilePath)

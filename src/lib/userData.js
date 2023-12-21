@@ -15,7 +15,7 @@ module.exports.createDataFile = function () {
         presets: []
     }, null, 4)
 
-    fs.access(dataPath, fs.constants.R_OK | fs.constants.W_OK, (err) => {
+    fs.access(dataPath, fs.constants.R_OK | fs.constants.W_OK, (err) => { // check for userData file
         if (!err) {
             console.log("Loading user data.")
         } else {
@@ -26,6 +26,35 @@ module.exports.createDataFile = function () {
     })
 }
 
+module.exports.writeDataFile = function (newData) {
+    fs.readFile(dataPath, 'utf-8', (err, data) => {
+        if (err) {
+            console.error("Error reading userData file", err)
+            return
+        }
+
+        // parse existing data
+        let existingData;
+        try {
+            existingData = JSON.parse(data)
+        } catch (parseErr) {
+            console.error("Error parsing existing data", parseErr)
+            return
+        }
+
+        const updatedData = {...existingData, ...newData} // merge old data with new data
+        const parsedUpdatedData = JSON.stringify(updatedData, null, 4)
+
+        // write new data
+        fs.writeFile(dataPath, parsedUpdatedData, (writeErr) => {
+            if (!writeErr) {
+                console.log("Updated userData.")
+            } else {
+                console.error("Error writing to userData", writeErr)
+            }
+        })
+    })
+}
 
 module.exports.createSettingsFile = function () {
     // console.log(dataPath)

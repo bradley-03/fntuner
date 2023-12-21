@@ -2,59 +2,73 @@ const { dialog, app } = require('electron')
 const settings = require('electron-settings')
 const os = require('os')
 const path = require('path')
-const fs = require('fs')
+const fs = require('fs').promises
 const controller = require('./controller')
 
 const dataPath = path.join(app.getPath('userData'), 'userData.json')
 
-console.log(dataPath)
-
-module.exports.createDataFile = function () {
+module.exports.createDataFile = async function () {
     const defaultData = JSON.stringify({
         filePath: path.join(os.homedir(), 'AppData', 'Local', 'FortniteGame', 'Saved', 'Config', 'WindowsClient'),
         presets: []
     }, null, 4)
 
-    fs.access(dataPath, fs.constants.R_OK | fs.constants.W_OK, (err) => { // check for userData file
-        if (!err) {
-            console.log("Loading user data.")
-        } else {
-            fs.writeFile(dataPath, defaultData, (e) => { // write userData file
-                if (e) { console.log("Error writing userData file.", e) }
-            })
+    try {
+        // Check for userData file
+        await fs.access(dataPath, fs.constants.R_OK | fs.constants.W_OK)
+    } catch (err) {
+        // File doesn't exist, create and write default data
+        try {
+            await fs.writeFile(dataPath, defaultData)
+            console.log("userData file created with default data.")
+        } catch (writeErr) {
+            console.error("Error writing userData file.", writeErr)
         }
-    })
+    }
 }
 
-module.exports.writeDataFile = function (newData) {
-    fs.readFile(dataPath, 'utf-8', (err, data) => {
-        if (err) {
-            console.error("Error reading userData file", err)
-            return
-        }
+module.exports.writeDataFile = async function (newData) {
+    try {
+        const data = await fs.readFile(dataPath, 'utf-8')
 
-        // parse existing data
-        let existingData;
+        let existingData
         try {
-            existingData = JSON.parse(data)
+            existingData = JSON.parse(data) // Parse existing data
         } catch (parseErr) {
             console.error("Error parsing existing data", parseErr)
             return
-        }
+        }        
 
-        const updatedData = {...existingData, ...newData} // merge old data with new data
+        // Merge old data with new data
+        const updatedData = { ...existingData, ...newData }
         const parsedUpdatedData = JSON.stringify(updatedData, null, 4)
 
-        // write new data
-        fs.writeFile(dataPath, parsedUpdatedData, (writeErr) => {
-            if (!writeErr) {
-                console.log("Updated userData.")
-            } else {
-                console.error("Error writing to userData", writeErr)
-            }
-        })
-    })
+        // Write new data
+        await fs.writeFile(dataPath, parsedUpdatedData)
+
+        console.log("Updated userData.")
+    } catch (err) {
+        console.error("Error reading/writing userData file", err)
+    }
 }
+
+module.exports.getUserData = async function (req) {
+    try {
+        const data = await fs.readFile(dataPath, 'utf-8')
+        const parsedData = JSON.parse(data)
+
+        if (parsedData[req]) {
+            return parsedData[req]
+        } else {
+            console.error(`Can't find ${req} in userData`)
+            throw new Error(errorMsg)
+        }
+    } catch (err) {
+        console.error("Error:", err)
+        throw new Error(err)
+    }
+}
+
 
 module.exports.createSettingsFile = function () {
     // console.log(dataPath)
@@ -71,6 +85,8 @@ module.exports.createSettingsFile = function () {
         console.log("Settings File Creation Failed")
     }
 }
+
+
 
 module.exports.setFilePath = async function () {
     const { canceled, filePaths } = await dialog.showOpenDialog({ properties: ['openDirectory'], defaultPath: await settings.get('settings.filePath') })

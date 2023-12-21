@@ -19,9 +19,8 @@ const createWindow = () => {
     win.loadFile(path.join('./', 'app', 'index.html'))
 }
 
-app.whenReady().then(() => {
-    config.createDataFile()
-    config.createSettingsFile() // create cfg file if none exists
+app.whenReady().then(async () => {
+    await config.createDataFile() // init userData file
     controller.openCfgFile()
     ipcMain.handle('setFilePath', config.setFilePath)
     ipcMain.handle('setValues', controller.setValues)

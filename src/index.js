@@ -4,8 +4,8 @@ const electron = require('electron')
 // Enable live reload for all the files inside your project directory
 require('electron-reload')(__dirname);
 const path = require('path')
-const controller = require('./controller')
-const config = require('./config')
+const controller = require('../controller.js')
+const config = require('../config.js')
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -16,7 +16,7 @@ const createWindow = () => {
         }
     })
 
-    win.loadFile(path.join(__dirname, 'app', 'index.html'))
+    win.loadFile(path.join('./', 'app', 'index.html'))
 }
 
 app.whenReady().then(() => {

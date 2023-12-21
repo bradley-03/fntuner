@@ -27,7 +27,7 @@ module.exports.createDataFile = async function () {
     }
 }
 
-module.exports.writeDataFile = async function (newData) {
+module.exports.updateUserData = async function (newData) {
     try {
         const data = await fs.readFile(dataPath, 'utf-8')
 
@@ -37,7 +37,7 @@ module.exports.writeDataFile = async function (newData) {
         } catch (parseErr) {
             console.error("Error parsing existing data", parseErr)
             return
-        }        
+        }
 
         // Merge old data with new data
         const updatedData = { ...existingData, ...newData }
@@ -68,6 +68,13 @@ module.exports.getUserData = async function (req) {
         throw new Error(err)
     }
 }
+
+
+
+
+
+
+
 
 
 module.exports.createSettingsFile = function () {

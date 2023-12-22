@@ -14,29 +14,6 @@ const renderAPIs = {
     dx12: { PreferredRHI: "dx12", PreferredFeatureLevel: "sm6" },
 }
 
-module.exports.updateFilePath = async function () {
-    const currentPath = await userData.getUserData('filePath')
-    const { canceled, filePaths } = await dialog.showOpenDialog({ 
-            properties: ['openDirectory'], 
-            defaultPath: currentPath
-    }) // open folder picker
-
-    if (!canceled) {    
-        try {
-            await fs.access( path.join(filePaths[0], 'GameUserSettings.ini'), fs.constants.R_OK )
-            await userData.updateUserData({filePath: filePaths[0]})
-            console.log("Successfully updated filePath.")
-        } catch (err) {
-            await dialog.showErrorBox("Invalid Directory.", "The directory you selected doesn't include a 'GameUserSettings.ini' file, the app won't work without this.")
-        }
-    }
-}
-
-
-
-
-
-
 
 
 // module.exports.openCfgFile = async function () {

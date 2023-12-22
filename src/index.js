@@ -1,11 +1,12 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
-const electron = require('electron')
 
+const electron = require('electron')
 // Enable live reload for all the files inside your project directory
 require('electron-reload')(__dirname);
+
 const path = require('path')
 const controller = require('./lib/controller.js')
-const config = require('./lib/userData.js')
+const userData = require('./lib/userData.js')
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -20,11 +21,7 @@ const createWindow = () => {
 }
 
 app.whenReady().then(async () => {
-    await config.createDataFile() // init userData file
-    controller.openCfgFile()
-    ipcMain.handle('setFilePath', config.setFilePath)
-    ipcMain.handle('setValues', controller.setValues)
-    ipcMain.on('updateConfig', (event, data) => controller.updateConfig(data))
+    await userData.createDataFile() // init userData file
 
     createWindow()
 

@@ -24,7 +24,6 @@
 	"homepage": "https://github.com/bradley-03/fn-resconfig#readme",
 	"dependencies": {
 		"electron-reload": "^2.0.0-alpha.1",
-		"electron-settings": "^4.0.2",
 		"electron-squirrel-startup": "^1.0.0",
 		"ini": "^4.1.1",
 		"winattr": "^3.0.0"

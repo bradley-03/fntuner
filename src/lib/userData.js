@@ -1,9 +1,6 @@
-const { dialog, app } = require('electron')
-const settings = require('electron-settings')
-const os = require('os')
+const { app } = require('electron')
 const path = require('path')
 const fs = require('fs').promises
-const controller = require('./controller')
 
 const dataPath = path.join(app.getPath('userData'), 'userData.json')
 

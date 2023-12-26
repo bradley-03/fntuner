@@ -1,12 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
+const path = require('path')
+const userData = require('./lib/userData.js')
+const config = require('./lib/config.js')
 
 const electron = require('electron')
-// Enable live reload for all the files inside your project directory
-require('electron-reload')(__dirname);
-
-const path = require('path')
-const controller = require('./lib/controller.js')
-const userData = require('./lib/userData.js')
+require('electron-reload')('./app');
 
 const createWindow = () => {
     const win = new BrowserWindow({

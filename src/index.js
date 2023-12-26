@@ -22,6 +22,7 @@ app.whenReady().then(async () => {
     await userData.createDataFile() // init userData file
     
     ipcMain.handle('get-config', async () => (await config.getCurrentCfg())) // send current config as object
+    ipcMain.handle('write-config', async (event, data) => (await config.writeConfig(data))) // write new config data
 
     createWindow()
     app.on('activate', () => {

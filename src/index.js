@@ -20,9 +20,10 @@ const createWindow = () => {
 
 app.whenReady().then(async () => {
     await userData.createDataFile() // init userData file
+    
+    ipcMain.handle('get-config', async () => (await config.getCurrentCfg())) // send current config as object
 
     createWindow()
-
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })

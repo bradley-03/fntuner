@@ -5,6 +5,7 @@ const resYbox = document.getElementById('resYBox')
 const renderApiSelect = document.getElementById('render-select')
 const readonlyCheck = document.getElementById('readonly-check')
 const submitBtn = document.getElementById('confirmbtn')
+const undoBtn = document.getElementById('undobtn')
 
 async function updateValues () {
     try {
@@ -44,6 +45,10 @@ async function submitConfigChanges () {
 
 submitBtn.addEventListener('click', async () => {
     await submitConfigChanges()
+})
+
+undoBtn.addEventListener('click', async () => {
+    await updateValues()
 })
 
 document.addEventListener('DOMContentLoaded', () => {

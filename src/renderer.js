@@ -6,6 +6,8 @@ const renderApiSelect = document.getElementById('render-select')
 const readonlyCheck = document.getElementById('readonly-check')
 const submitBtn = document.getElementById('confirmbtn')
 const undoBtn = document.getElementById('undobtn')
+const closeBtn = document.getElementById('closebtn')
+const minimizeBtn = document.getElementById('minimizebtn')
 
 async function updateValues () {
     try {
@@ -49,6 +51,14 @@ submitBtn.addEventListener('click', async () => {
 
 undoBtn.addEventListener('click', async () => {
     await updateValues()
+})
+
+closeBtn.addEventListener('click', () => {
+    ipcRenderer.send('close-window')
+})
+
+minimizeBtn.addEventListener('click', () => {
+    ipcRenderer.send('minimize-window')
 })
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -34,10 +34,11 @@ body {
 }
 
 .topbar {
-    height: 25px;
+    height: 35px;
     width: 100%;
     background-color: white;
     -webkit-app-region: drag;
+    user-select: none;
     background-color: rgba(0, 0, 0, 0.211);
     display:flex;
     justify-content: end;
@@ -56,6 +57,7 @@ body {
     height: 100%;
     aspect-ratio: 1/1;
     -webkit-app-region: no-drag;
+    cursor: pointer;
 }
 
 button:hover {

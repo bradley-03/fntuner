@@ -21,6 +21,10 @@ const createWindow = () => {
     })
 
     win.loadFile(path.join('./', 'app', 'index.html'))
+
+    ipcMain.on('minimize-window', () => {
+        win.minimize()
+    })
 }
 
 app.whenReady().then(async () => {
@@ -28,6 +32,11 @@ app.whenReady().then(async () => {
     
     ipcMain.handle('get-config', async () => (await config.getCurrentCfg())) // send current config as object
     ipcMain.handle('write-config', async (event, data) => (await config.writeConfig(data))) // write new config data
+
+    ipcMain.on('close-window', () => {
+        app.quit()
+    })
+
 
     createWindow()
     app.on('activate', () => {

@@ -41,9 +41,20 @@ body {
     user-select: none;
     background-color: rgba(0, 0, 0, 0.211);
     display:flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
     padding: px 0;
+}
+
+.topbar div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.topbar h3 {
+    margin-left: 10px;
+    font-weight: 600;
 }
 
 .topbar button {

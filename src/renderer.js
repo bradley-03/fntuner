@@ -30,7 +30,9 @@ async function submitConfigChanges () {
             '/Script/FortniteGame': {
                 'FortGameUserSettings': {
                     ResolutionSizeX: resXbox.value,
-                    ResolutionSizeY: resYbox.value
+                    ResolutionSizeY: resYbox.value,
+                    LastUserConfirmedResolutionSizeX: resXbox.value,
+                    LastUserConfirmedResolutionSizeY: resYbox.value
                 }
             }
         },

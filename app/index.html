@@ -17,9 +17,9 @@
         <div>
             <h3>res config</h3>
         </div>
-        <div> 
-            <button id="minimizebtn"><i class="bi bi-dash-lg"></i></button>
-            <button id="closebtn"><i class="bi bi-x-lg"></i></button>
+        <div>
+            <button id="minimizebtn" class="topBtn"><i class="bi bi-dash-lg"></i></button>
+            <button id="closebtn" class="topBtn"><i class="bi bi-x-lg"></i></button>
         </div>
 
     </div>
@@ -28,10 +28,18 @@
         <img src="../src/img/bg-snow.png" alt="" class="bg-img">
 
         <div class="content">
-            <label for="resXBox">Resolution:</label>
-            <input type="number" value="" id="resXBox" placeholder="Height" step="10">
-            <input type="number" value="" id="resYBox" placeholder="Width" step="10">
-            <label for="render-select">Rendering Mode:</label>
+            <div class="resolutionSettings">
+                <section>
+                    <label for="resXBox">Width</label>
+                    <input type="number" value="" id="resXBox" placeholder="Height" step="10">
+                </section>
+                <section>
+                    <label for="resYBox">Height</label>
+                    <input type="number" value="" id="resYBox" placeholder="Width" step="10">
+                </section>
+            </div>
+
+            <label for="render-select">Rendering API:</label>
             <select id="render-select">
                 <option value="performance">Performance Mode</option>
                 <option value="dx11">DirectX 11</option>

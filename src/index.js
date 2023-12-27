@@ -3,9 +3,6 @@ const path = require('path')
 const userData = require('./lib/userData.js')
 const config = require('./lib/config.js')
 
-const electron = require('electron')
-require('electron-reload')('./app');
-
 const createWindow = () => {
     const win = new BrowserWindow({
         width: 500,

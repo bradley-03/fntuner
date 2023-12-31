@@ -178,6 +178,10 @@ button:hover {
     cursor: pointer;
 }
 
+#confirmbtn:hover + #tooltips {
+    color: black;
+}
+
 label {
     font-size: 1.1rem;
 }
@@ -248,10 +252,10 @@ label {
     transform: rotate(45deg);
 }
 
-#tooltips {
+#tooltip {
     position: absolute;
     bottom: 0;
     text-align: center;
     width: 100%;
-    display: none;
+    opacity: 0.6;
 }

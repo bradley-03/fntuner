@@ -11,7 +11,7 @@ input,
 button,
 select,
 option {
-    font-family: 'Rethink Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .wrapper {
@@ -179,7 +179,7 @@ button:hover {
 }
 
 label {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .container {
@@ -189,7 +189,7 @@ label {
     margin-top: 10px;
     margin-bottom: 20px;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -246,4 +246,12 @@ label {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+#tooltips {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    display: none;
 }

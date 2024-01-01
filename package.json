@@ -1,7 +1,7 @@
 {
 	"name": "fntuner",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Quickly and easily manage your Fortnite config file",
 	"main": "./src/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -9,15 +9,15 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/bradley-03/fn-resconfig.git"
+		"url": "git+https://github.com/bradley-03/fntuner.git"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/bradley-03/fn-resconfig/issues"
+		"url": "https://github.com/bradley-03/fntuner/issues"
 	},
-	"homepage": "https://github.com/bradley-03/fn-resconfig#readme",
+	"homepage": "https://github.com/bradley-03/fntuner#readme",
 	"dependencies": {
 		"electron-reload": "^2.0.0-alpha.1",
 		"electron-squirrel-startup": "^1.0.0",

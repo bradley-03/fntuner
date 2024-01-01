@@ -72,10 +72,10 @@ module.exports.writeConfig = async function (newData) {
         // set readonly based on checkbox
         await winattr.setSync(cfgFilePath, {readonly: newData['readOnly']})
 
-        dialog.showMessageBox(null, {title: "Success", message: "Successfully updated your config!"})
+        // dialog.showMessageBox(null, {title: "Success", message: "Successfully updated your config!"})
         return 'success'
     } catch (err) {
-        dialog.showErrorBox("Error", "Something went wrong whilst writing to your config file.")
+        // dialog.showErrorBox("Error", "Something went wrong whilst writing to your config file.")
         console.error("Error writing to config.", err)
         throw err
     }

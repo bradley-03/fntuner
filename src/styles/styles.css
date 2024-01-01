@@ -4,6 +4,7 @@ body {
     color: white;
     user-select: none;
     margin: 0;
+    overflow: hidden;
 }
 
 body,
@@ -39,7 +40,8 @@ option {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    padding-top: 30px;
+    padding-top: 20px;
+    overflow:hidden;
 }
 
 .topbar {
@@ -258,4 +260,54 @@ label {
     text-align: center;
     width: 100%;
     opacity: 0.6;
+}
+
+.hidden {
+    display: none;
+}
+
+.shake {
+    -webkit-animation: kf_shake 0.4s 1 linear;
+    -moz-animation: kf_shake 0.4s 1 linear;
+    -o-animation: kf_shake 0.4s 1 linear;
+}
+@-webkit-keyframes kf_shake {
+    0% { -webkit-transform: translate(30px); }
+    20% { -webkit-transform: translate(-30px); }
+    40% { -webkit-transform: translate(15px); }
+    60% { -webkit-transform: translate(-15px); }
+    80% { -webkit-transform: translate(8px); }
+    100% { -webkit-transform: translate(0px); }
+}
+@-moz-keyframes kf_shake {
+    0% { -moz-transform: translate(30px); }
+    20% { -moz-transform: translate(-30px); }
+    40% { -moz-transform: translate(15px); }
+    60% { -moz-transform: translate(-15px); }
+    80% { -moz-transform: translate(8px); }
+    100% { -moz-transform: translate(0px); }
+}
+@-o-keyframes kf_shake {
+    0% { -o-transform: translate(30px); }
+    20% { -o-transform: translate(-30px); }
+    40% { -o-transform: translate(15px); }
+    60% { -o-transform: translate(-15px); }
+    80% { -o-transform: translate(8px); }
+    100% { -o-origin-transform: translate(0px); }
+}
+
+#errormsg {
+    color: rgb(211, 44, 44);
+    font-weight: 600;
+    position: absolute;
+    bottom: 45px;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#errormsg.show {
+    opacity: 1;
+    transition: 0.3s;
 }

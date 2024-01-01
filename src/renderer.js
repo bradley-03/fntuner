@@ -10,6 +10,13 @@ const closeBtn = document.getElementById('closebtn')
 const minimizeBtn = document.getElementById('minimizebtn')
 const tooltip = document.getElementById('tooltip')
 const readonlyContainer = document.getElementById('readonly-container')
+const mainContent = document.getElementById('mainContent')
+const confirmContent = document.getElementById('confirmContent')
+const errorMsg = document.getElementById('errormsg')
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 async function updateValues() {
     try {
@@ -44,7 +51,16 @@ async function submitConfigChanges() {
 
     try {
         const res = await ipcRenderer.invoke('write-config', data)
+        errorMsg.classList.remove('show')
     } catch (e) {
+        mainContent.classList.add('shake')
+        errorMsg.classList.add('show')
+        sleep(200).then(() => {
+            mainContent.classList.remove('shake')
+        })
+        sleep(6000).then(() => {
+            errorMsg.classList.remove('show')
+        })
         console.log(e)
     }
 }

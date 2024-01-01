@@ -27,7 +27,7 @@
     <div class="wrap">
         <img src="../src/img/bg-snow.png" alt="" class="bg-img">
 
-        <div class="content">
+        <div id="mainContent" class="content">
             <label>Resolution</label>
             <div class="resolutionSettings">
                 
@@ -55,7 +55,12 @@
             <button id="confirmbtn">Confirm</button>
             <button id="undobtn">Undo Changes</button>
         </div>
+
+        <div id="confirmContent" class="content">
+
+        </div>
         
+        <p id="errormsg">Error updating your config!</p>
         <p id="tooltip"></p>
     </div>
     <script src="../src/renderer.js"></script>

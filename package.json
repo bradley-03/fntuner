@@ -5,14 +5,16 @@
 	"main": "./src/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "electron ."
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/bradley-03/fntuner.git"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "bradley-03",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/bradley-03/fntuner/issues"
@@ -25,22 +27,18 @@
 		"winattr": "^3.0.0"
 	},
 	"devDependencies": {
-		"@electron-forge/cli": "^7.2.0",
-		"@electron-forge/maker-deb": "^7.2.0",
-		"@electron-forge/maker-rpm": "^7.2.0",
-		"@electron-forge/maker-squirrel": "^7.2.0",
-		"@electron-forge/maker-zip": "^7.2.0",
-		"@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
+		"electron-builder": "^24.9.1",
 		"electron": "^28.0.0"
 	},
 	"build": {
+		"productName": "FNTuner",
 		"win": {
 			"target": [
 				"portable"
 			]
 		},
 		"portable": {
-			"artifactName": "pvmplayer_portable.exe"
+			"useZip": true
 		}
 	}
 }

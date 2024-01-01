@@ -13,6 +13,7 @@ const readonlyContainer = document.getElementById('readonly-container')
 const mainContent = document.getElementById('mainContent')
 const confirmContent = document.getElementById('confirmContent')
 const errorMsg = document.getElementById('errormsg')
+const successMsg = document.getElementById('successmsg')
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -52,9 +53,14 @@ async function submitConfigChanges() {
     try {
         const res = await ipcRenderer.invoke('write-config', data)
         errorMsg.classList.remove('show')
+        successMsg.classList.add('show')
+        sleep(3000).then(() => {
+            successMsg.classList.remove('show')
+        })
     } catch (e) {
         mainContent.classList.add('shake')
         errorMsg.classList.add('show')
+        successMsg.classList.remove('show')
         sleep(200).then(() => {
             mainContent.classList.remove('shake')
         })

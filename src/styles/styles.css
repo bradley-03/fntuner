@@ -304,10 +304,26 @@ label {
     text-align: center;
     width: 100%;
     opacity: 0;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 #errormsg.show {
     opacity: 1;
-    transition: 0.3s;
+    transition: 0.2s;
+}
+
+#successmsg {
+    color: rgb(44, 211, 125);
+    font-weight: 600;
+    position: absolute;
+    bottom: 45px;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+#successmsg.show {
+    opacity: 1;
+    transition: 0.2s;
 }

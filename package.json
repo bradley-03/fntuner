@@ -38,8 +38,8 @@
 			],
 			"icon": "/src/img/icon.ico"
 		},
-		"portable": {
-			"useZip": true
+		"directories": {
+			"buildResources": "/src/img"
 		}
 	}
 }

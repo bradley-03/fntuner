@@ -19,13 +19,13 @@ There are multiple options for installation that you can choose from:
 [Download](https://github.com/bradley-03/fntuner/releases/latest) the .zip file from the release and extract the files to any location you wish. To uninstall, just delete these files.
 
 ### Portable
-[Download](https://github.com/bradley-03/fntuner/releases/latest) the portable file from the release and place anywhere. This is the same as the other versions, but doesn't require and installation or extra files to use it, the downside to this is the load time is a lot slower.
+[Download](https://github.com/bradley-03/fntuner/releases/latest) the portable file from the release and place anywhere. This is the same as the other versions, but doesn't require an installation or extra files to use it, the downside to this is the load time is a lot slower.
 
 ## Usage
 
 When you launch FNTuner your current config options should be loaded into the boxes. Configure those values however you wish and press "Confirm", you should see a success message.
 
-Checking the "read-only" box will set your config file to read only. This will prevent Fortnite from changing it, and if changed they will revert when you restart your game. If this is unchecked and your resolution changes in the settings, you will have to re-set your values.
+Checking the "read-only" box will set your config file to read only. This will prevent Fortnite from changing settings, and if they are changed they will revert when you restart your game. If this is unchecked and your resolution changes in the settings, you will have to re-set your values.
 
 The "undo changes" button will set your values back to the current config. This will not revert changes you confirmed.
 

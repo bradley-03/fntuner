@@ -35,7 +35,7 @@ The "undo changes" button will set your values back to the current config. This 
 Windows may give you a popup telling you that running the app could put your PC at risk. This is because the app is unsigned and getting it signed can be expensive. The software is safe, and you can still install it by clicking 'More Info' then 'Run anyway'.
 
 ### Error updating config
-If you get an error when trying to confirm your changes, this is usually because the config file couldn't be found. Make sure to check your Fortnite config location (C:\Users\USER\AppData\Local\FortniteGame\Saved\Config\WindowsClient) for a "GameUserSettings.ini" file.
+If you get an error when trying to confirm your changes, this is usually because the config file couldn't be found. Make sure to check your Fortnite config location (C:\Users\USER\AppData\Local\FortniteGame\Saved\Config\WindowsClient) for a "GameUserSettings.ini" file. If this doesn't work, try running the program as administrator.
 
 ## About
 I made this software after Fortnite added multiple gamemodes to the game and wanting to play some gamemodes with different settings to others. I found it can be a tedious process changing these settings manually each time, and I couldn't do it without first opening the game. My vision was an app that could swap between configs easily, with presets that you can customise. It uses [Electron](https://www.electronjs.org/) and is my first real application in it, so code may be unoptimized.

@@ -35,7 +35,8 @@
 		"win": {
 			"target": [
 				"portable"
-			]
+			],
+			"icon": "/src/img/icon.ico"
 		},
 		"portable": {
 			"useZip": true

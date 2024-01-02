@@ -16,8 +16,10 @@ const createWindow = () => {
         maxHeight: 500,
         frame: false,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-        }
+            preload: path.join(__dirname, 'preload.js'),
+            devTools: false,
+        },
+        icon: path.join('./', 'src', 'img', 'icon.png')
     })
 
     win.loadFile(path.join('./', 'app', 'index.html'))

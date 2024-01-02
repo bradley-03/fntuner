@@ -10,7 +10,7 @@ FNTuner is a small program for Windows that provides a simple way to customize y
 
 ## Installation
 
-There are multiple options for installation that you can choose from.
+There are multiple options for installation that you can choose from:
 
 ### Installer
 [Download](https://github.com/bradley-03/fntuner/releases/latest) the setup file from the release and run it. To uninstall, use Windows settings or run the uninstaller found in "C:/Users/USER/AppData/Local/Programs/fntuner".

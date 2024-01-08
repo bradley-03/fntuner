@@ -1,19 +1,26 @@
 const ipcRenderer = electronAPI.ipcRenderer;
 
+// form elements
 const resXbox = document.getElementById('resXBox')
 const resYbox = document.getElementById('resYBox')
 const renderApiSelect = document.getElementById('render-select')
 const readonlyCheck = document.getElementById('readonly-check')
+
+// buttons
 const confirmBtn = document.getElementById('confirmbtn')
 const undoBtn = document.getElementById('undobtn')
 const closeBtn = document.getElementById('closebtn')
 const minimizeBtn = document.getElementById('minimizebtn')
+const presetsbtn = document.getElementById('presetsbtn')
+
+// content
 const tooltip = document.getElementById('tooltip')
 const readonlyContainer = document.getElementById('readonly-container')
 const mainContent = document.getElementById('mainContent')
-const confirmContent = document.getElementById('confirmContent')
+const presetsContent = document.getElementById('presetsContent')
 const errorMsg = document.getElementById('errormsg')
 const successMsg = document.getElementById('successmsg')
+
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -87,6 +94,12 @@ minimizeBtn.addEventListener('click', () => {
     ipcRenderer.send('minimize-window')
 })
 
+presetsbtn.addEventListener('click', () => {
+    mainContent.classList.toggle('hidden')
+    presetsContent.classList.toggle('hidden')
+})
+
+//set initial values
 document.addEventListener('DOMContentLoaded', () => {
     updateValues();
 });
@@ -96,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
 confirmBtn.addEventListener('mouseenter', function () {
     tooltip.innerHTML = "Confirm your changes"
 })
-
 confirmBtn.addEventListener('mouseleave', function () {
     tooltip.innerHTML = ""
 })
@@ -104,14 +116,13 @@ confirmBtn.addEventListener('mouseleave', function () {
 undoBtn.addEventListener('mouseenter', function () {
     tooltip.innerHTML = "Reset values back to current config"
 })
-
 undoBtn.addEventListener('mouseleave', function () {
     tooltip.innerHTML = ""
 })
+
 readonlyContainer.addEventListener('mouseenter', function () {
     tooltip.innerHTML = "Set config file to read only (settings will revert when you restart game)"
 })
-
 readonlyContainer.addEventListener('mouseleave', function () {
     tooltip.innerHTML = ""
 })

@@ -68,7 +68,7 @@ option {
     font-weight: 600;
 }
 
-.topbar button {
+.topBtn {
     background: none;
     border: none;
     display: flex;
@@ -83,7 +83,13 @@ option {
     border-radius: 15px;
 }
 
-.topbar button:hover {
+.topBtn:hover {
+    background-color: rgba(255, 255, 255, 0.151);
+    border-radius: 0;
+    color: white;
+}
+
+.topBtn.selected {
     background-color: rgba(255, 255, 255, 0.151);
     border-radius: 0;
     color: white;
@@ -326,4 +332,11 @@ label {
 #successmsg.show {
     opacity: 1;
     transition: 0.2s;
+}
+
+#presetreturnbtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 35px;
 }

@@ -11,7 +11,8 @@ const confirmBtn = document.getElementById('confirmbtn')
 const undoBtn = document.getElementById('undobtn')
 const closeBtn = document.getElementById('closebtn')
 const minimizeBtn = document.getElementById('minimizebtn')
-const presetsbtn = document.getElementById('presetsbtn')
+const presetsBtn = document.getElementById('presetsbtn')
+const presetReturnBtn = document.getElementById('presetreturnbtn')
 
 // content
 const tooltip = document.getElementById('tooltip')
@@ -94,7 +95,13 @@ minimizeBtn.addEventListener('click', () => {
     ipcRenderer.send('minimize-window')
 })
 
-presetsbtn.addEventListener('click', () => {
+presetsBtn.addEventListener('click', () => {
+    presetsBtn.classList.toggle('selected')
+    mainContent.classList.toggle('hidden')
+    presetsContent.classList.toggle('hidden')
+})
+presetReturnBtn.addEventListener('click', () => {
+    presetsBtn.classList.toggle('selected')
     mainContent.classList.toggle('hidden')
     presetsContent.classList.toggle('hidden')
 })
